@@ -1,16 +1,22 @@
 #include <stdio.h>
 /**
- * this is a first c code in this project
- * it is a simple code for print some text 
- * on the console desplay
+ * main - Entry point
+ *
+ * This is the first C code in this project.
+ * It is a simple code for printing some text on the console display.
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
   /**
-  * the puts is a biltin function on c 
-  * it show a message on scrin like printf
-  */
-  puts("\"Programming is like building a multilingual puzzle"); 
-  /** return main function alwayse scusses */
+   * puts - print string to stdout
+   *
+   * The puts function is a built-in function in C.
+   * It shows a message on the screen, similar to printf.
+   */
+  puts("\"Programming is like building a multilingual puzzle");
+
   return (0);
 }
+
