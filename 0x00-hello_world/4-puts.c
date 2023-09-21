@@ -10,7 +10,7 @@ int main(void)
   * the puts is a biltin function on c 
   * it show a message on scrin like printf
   */
-  puts("\"programming is like building a multilingual puzzle"); 
+  puts("\"programming is like building a multilingual puzzle\n"); 
   /** return main function alwayse scusses */
   return (0);
 }
