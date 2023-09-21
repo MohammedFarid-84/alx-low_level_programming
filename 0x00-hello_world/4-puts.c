@@ -15,8 +15,6 @@ int main(void)
    * The puts function is a built-in function in C.
    * It shows a message on the screen, similar to printf.
    */
-  puts("\"Programming is like building a multilingual puzzle");
-
-  return (0);
+	puts("\"Programming is like building a multilingual puzzle");
+	return (0);
 }
-
