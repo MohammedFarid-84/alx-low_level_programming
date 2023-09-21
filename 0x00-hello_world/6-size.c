@@ -4,7 +4,7 @@
  *
  * void: here no thing
  *
- * Return 0 alwys
+ * Return: 0 alwys
  */
 
 int main(void)
