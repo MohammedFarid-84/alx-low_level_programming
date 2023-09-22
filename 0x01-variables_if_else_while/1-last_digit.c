@@ -31,7 +31,7 @@ int main(void)
 	} else if (lst > 0 && lst < 6)
 	{
 		tal = " and is less than 6 and not 0";
-	} else 
+	} else
 	{
 		tal = " and is less than 6 and not 0";
 	}
