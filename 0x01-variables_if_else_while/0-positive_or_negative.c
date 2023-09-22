@@ -21,9 +21,11 @@ int main(void)
 	if (n < 0)
 	{
 		dsc = " is negative";
-	else if (n == 0)
+	} else if (n == 0)
+	{
 		dsc = " is zero";
-	else
+	} else
+	{
 		dsc = " is positive";
 	}
 
