@@ -18,27 +18,23 @@ int main(void)
 	{
 		for (x = i; x <= 9; x++)
 		{
-			if (a[i] != b[x])
+			for (y = x; y <= 9; y++)
 			{
-				for (y = x; y <= 9; y++)
+				if ((a[i] != b[x]) && (b[x] != c[y]))
 				{
-					if (b[x] != c[y])
-					{
-						putchar('0' + a[i]);
-						putchar('0' + b[x]);
-						putchar('0' + c[y]);
+					putchar('0' + a[i]);
+					putchar('0' + b[x]);
+					putchar('0' + c[y]);
 
-						if (!(i == 7 && x == 8 && y == 9))
-						{
-							putchar(',');
-							putchar(' ');
-						}
+					if (!(i == 7 && x == 8 && y == 9))
+					{
+						putchar(',');
+						putchar(' ');
 					}
 				}
 			}
 		}
 	}
-	
 
 	putchar('\n');
 	return (0);
