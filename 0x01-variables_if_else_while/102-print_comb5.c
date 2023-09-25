@@ -9,34 +9,26 @@
 
 int main(void)
 {
-	int i, x, y, z;
+	int i, x;
 
-	for (i = 0; i <= 9; i++)
+	while (i <= 98)
 	{
-		for (x = 0; x <= 9; x++)
+		x = i + 1;
+		while (x <= 99)
 		{
-			for (y = i; y <= 9; y++)
+			putchar('0' + i / 10);
+			putchar('0' + i % 10);
+			putchar(' ');
+			putchar('0' + x / 10);
+			putchar('0' + x % 10);
+			if (i != 98)
 			{
-				for (z = x; z <= 9; z++)
-				{
-					if (i == x && y == z)
-					{
-						continue;
-					}
-					putchar('0' + i);
-					putchar('0' + x);
-					putchar(' ');
-					putchar('0' + y);
-					putchar('0' + z);
-
-					if (!(i == 9 && x == 8 && y == 9 && z == 9))
-					{
-						putchar(',');
-						putchar(' ');
-					}
-				}
+				putchar(',');
+				putchar(' ');
 			}
+			x++;
 		}
+		i++;
 	}
 	putchar('\n');
 	return (0);
