@@ -21,7 +21,7 @@ int main(void)
 			{
 				putchar('0' + a[i]);
 				putchar('0' + b[x]);
-			
+
 				if (!(i == 8 && x == 9))
 				{
 					putchar(',');
