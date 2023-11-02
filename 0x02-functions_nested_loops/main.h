@@ -10,6 +10,7 @@
 
 /*here define the prototype functions*/
 int _putchar(char c);
+int print_alphabet(void);
 
 
 /*ending header*/
