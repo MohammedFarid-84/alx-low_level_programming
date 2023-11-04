@@ -12,14 +12,23 @@ void print_times_table(int x)
 
 	i = n = 0;
 
-	if (x < 0 || x > 15)
-		exit(0);
-	else
+	if (x >= 0 && x <= 15)
 		for (i = 0; i <= x; i++)
 		{
 			for (n = 0; n <= x; n++)
 			{
-				printf("%4d,", (n * i));
+				if (n == 0)
+				{
+					printf("%d,", (n * i));
+				}
+				else if (n != x)
+				{
+					printf("%4d,", (n * i));
+				}
+				else
+				{
+					printf("%4d\n", (n * i));
+				}
 			}
-		}	printf("\n");
+		}
 }
