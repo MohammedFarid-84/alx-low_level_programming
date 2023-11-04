@@ -24,3 +24,9 @@ int sum_nutral(void)
 	printf("%d\n", sum);
 	return (0);
 }
+
+int main(void)
+{
+	sum_nutral();
+	return (0);
+}
