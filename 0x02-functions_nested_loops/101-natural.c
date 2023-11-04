@@ -25,6 +25,12 @@ int sum_nutral(void)
 	return (0);
 }
 
+/**
+ * main - call sum_nutral function.
+ *
+ * Return: nothing.
+ */
+
 int main(void)
 {
 	sum_nutral();
