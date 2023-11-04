@@ -17,17 +17,21 @@ void print_times_table(int x)
 		{
 			for (n = 0; n <= x; n++)
 			{
-				if (n == 0)
+				if (x == 0)
+				{
+					printf("%d\n", (n * i));
+				}
+				else if (n == 0)
 				{
 					printf("%d,", (n * i));
 				}
-				else if (n != x)
+				else if (n == x)
 				{
-					printf("%4d,", (n * i));
+					printf("%4d\n", (n * i));
 				}
 				else
 				{
-					printf("%4d\n", (n * i));
+					printf("%4d,", (n * i));
 				}
 			}
 		}
