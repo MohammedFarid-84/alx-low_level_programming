@@ -1,4 +1,6 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /**
  * largest_number2 - test if larg the number from 2 number
@@ -12,9 +14,9 @@ int largest_number2(int x, int y)
 	int larg;
 
 	if (x > y)
-		larg = x;
+        	larg = x;
 	else
-		larg = y;
+        	larg = y;
 
 	return (larg);
 }
@@ -41,6 +43,18 @@ int largest_number(int a, int b, int c)
 		largest = b;
 	}
 	else if (c > largest_number2(a, b))
+	{
+		largest = c;
+	}
+	else if (a == largest_number2(b, c))
+	{
+		largest = a;
+	}
+	else if (b == largest_number2(a, c))
+	{
+		largest = b;
+	}
+	else if (c == largest_number2(b, a))
 	{
 		largest = c;
 	}
