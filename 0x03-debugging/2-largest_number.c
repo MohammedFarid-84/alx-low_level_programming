@@ -1,6 +1,26 @@
 #include "main.h"
 
 /**
+ * largest_number2 - test if larg the number from 2 number
+ * @x: the first number
+ * @y: the second number
+ * Return: largest number
+ */
+
+int largest_number2(int x, int y)
+{
+	int larg;
+
+	if (x > y)
+		larg = x;
+	else
+		larg = y;
+
+	return (larg);
+}
+
+
+/**
  * largest_number - returns the largest of 3 numbers
  * @a: first integer
  * @b: second integer
@@ -10,17 +30,17 @@
 
 int largest_number(int a, int b, int c)
 {
-	int largest = 0;
+	int largest;
 
-	if (a > b && a > c)
+	if (a > largest_number2(b, c))
 	{
 		largest = a;
 	}
-	else if (b > a && b > c)
+	else if (b > largest_number2(a, c))
 	{
 		largest = b;
 	}
-	else if (c > a && c > b)
+	else if (c > largest_number2(a, b))
 	{
 		largest = c;
 	}
