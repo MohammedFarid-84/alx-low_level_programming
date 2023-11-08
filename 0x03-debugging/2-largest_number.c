@@ -14,9 +14,9 @@ int largest_number2(int x, int y)
 	int larg;
 
 	if (x > y)
-        	larg = x;
+		larg = x;
 	else
-        	larg = y;
+		larg = y;
 
 	return (larg);
 }
