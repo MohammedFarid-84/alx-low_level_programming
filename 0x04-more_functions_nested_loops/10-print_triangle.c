@@ -13,7 +13,7 @@ void print_triangle(int n)
 
 	i = n;
 	x = 0;
-       	y = 1;
+	y = 1;
 
 	if (n <= 0)
 	{
@@ -24,7 +24,7 @@ void print_triangle(int n)
 		while (n > 0)
 		{
 			while (x < i)
-			{	
+			{
 				if (x < (i - y))
 				{
 					_putchar(' ');
