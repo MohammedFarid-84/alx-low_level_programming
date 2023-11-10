@@ -12,23 +12,33 @@ void print_triangle(int n)
 	int i, x, y;
 
 	i = n;
-	x = y = 0;
+	x = 0;
+       	y = 1;
 
-	while (n > 0)
+	if (n <= 0)
 	{
-		while (x < (i - y))
+		_putchar('\n');
+	}
+	else
+	{
+		while (n > 0)
 		{
-			_putchar(' ');
-			x++;
+			while (x < i)
+			{	
+				if (x < (i - y))
+				{
+					_putchar(' ');
+				}
+				else
+				{
+					_putchar('#');
+				}
+				x++;
+			}
+			_putchar('\n');
+			y++;
+			x = 0;
+			n--;
 		}
-		while (x <= i)
-		{
-			_putchar('#');
-			x++;
-		}
-		y++;
-		x = 0;
-		printf("\n");
-		--n;
 	}
 }
