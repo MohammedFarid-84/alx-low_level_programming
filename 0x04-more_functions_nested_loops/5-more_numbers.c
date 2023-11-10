@@ -29,7 +29,7 @@ void more_numbers(void)
 		}
 
 		j = 0;
-		printf("\n");
+		_putchar('\n');
 		i++;
 	}
 }
