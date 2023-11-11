@@ -7,29 +7,28 @@
  */
 void splitno(int n)
 {
+	int i, y;
+
+	i = y = 0;
+
 	if (n <= 9)
 	{
 		_putchar('0' + n);
 	}
-	else if (n < 100)
+	else 
 	{
-		_putchar('0' + n / 10);
-		_putchar('0' + n % 10);
-	}
-	else if (n < 1000)
-	{
-		_putchar('0' + n / 100);
-		_putchar('0' + (n / 10) % 10);
-		_putchar('0' + n % 10);
-	}
-	else if (n < 10000)
-	{
-		_putchar('0' + (n / 1000));
-		_putchar('0' + ((n / 100) % 10));
-		_putchar('0' + ((n / 10) % 10));
-		_putchar('0' + (n % 10));
+		for (i = n; i > 0; i /= 10)
+		{
+			y = (y * 10) + (i % 10);
+		}
+
+		for (i = y; i > 0; i /= 10)
+		{
+			_putchar('0' + (i % 10));
+		}
 	}
 }
+
 
 
 /**
