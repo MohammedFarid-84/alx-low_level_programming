@@ -15,7 +15,7 @@ void splitno(int n)
 	{
 		_putchar('0' + n);
 	}
-	else 
+	else
 	{
 		for (i = n; i > 0; i /= 10)
 		{
