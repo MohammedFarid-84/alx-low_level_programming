@@ -27,7 +27,7 @@ void more_numbers(void)
 			}
 			j++;
 		}
-		_putchar('\n');
+		printf("\n");
 		i++;
 		j = 0;
 	}
