@@ -3,9 +3,10 @@
 /**
  * splitno - split numbers for print it digit and digit
  * @n: number for split.
+ * @i: if number is minus.
  * Return: void.
  */
-void splitno(int n,int i)
+void splitno(int n, int i)
 {
 	int y, z;
 
