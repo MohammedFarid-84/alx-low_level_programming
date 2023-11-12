@@ -18,5 +18,9 @@ int main(void)
 	_putchar('\n');
 	print_number(-98);
 	_putchar('\n');
+	print_number(INT_MIN);
+	_putchar('\n');
+	print_number(INT_MAX);
+	_putchar('\n');
 	return (0);
 }

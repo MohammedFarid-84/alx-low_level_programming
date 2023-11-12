@@ -5,7 +5,7 @@
  * @n: number for split.
  * Return: void.
  */
-void splitno(int n)
+void splitno(int n,int i)
 {
 	int y, z;
 
@@ -17,13 +17,21 @@ void splitno(int n)
 	}
 	else
 	{
-		for (z = 1; z <= n; z *= 10)
+		for (z = 1; z <= n / 10; z *= 10)
 			;
 
-		for (; z > 1; z /= 10)
+		for (; z > 0; z /= 10)
 		{
-			y = ((n * 10) / z) % 10;
-			_putchar('0' + y);
+			y = n / z;
+			if (i == 1 && z == 1)
+			{
+				_putchar('0' + (y + 1));
+			}
+			else
+			{
+				_putchar('0' + y);
+			}
+			n -= y * z;
 		}
 	}
 }
@@ -45,10 +53,18 @@ void print_number(int x)
 	{
 		x *= -1;
 		_putchar('-');
-		splitno(x);
+		if (x == INT_MIN)
+		{
+			x = INT_MAX;
+			splitno(x, 1);
+		}
+		else
+		{
+			splitno(x, 0);
+		}
 	}
 	else
 	{
-		splitno(x);
+		splitno(x, 0);
 	}
 }
