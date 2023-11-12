@@ -7,9 +7,9 @@
  */
 void splitno(int n)
 {
-	int i, y;
+	int y, z;
 
-	i = y = 0;
+	y = 0;
 
 	if (n <= 9)
 	{
@@ -17,19 +17,16 @@ void splitno(int n)
 	}
 	else
 	{
-		for (i = n; i > 0; i /= 10)
-		{
-			y = (y * 10) + (i % 10);
-		}
+		for (z = 1; z <= n; z *= 10)
+			;
 
-		for (i = y; i > 0; i /= 10)
+		for (; z > 1; z /= 10)
 		{
-			_putchar('0' + (i % 10));
+			y = ((n * 10) / z) % 10;
+			_putchar('0' + y);
 		}
 	}
 }
-
-
 
 /**
  * print_number - print an integer

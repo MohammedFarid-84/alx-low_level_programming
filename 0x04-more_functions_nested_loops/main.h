@@ -4,6 +4,7 @@
 /** THE NESSERY LIBRARIES **/
 #include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
 
 
 /** THE PROTOTYPE FUNCTIONS **/
