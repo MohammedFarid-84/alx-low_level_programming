@@ -27,9 +27,8 @@ void more_numbers(void)
 			}
 			j++;
 		}
-
-		j = 0;
-		printf("\n");
+		_putchar('\n');
 		i++;
+		j = 0;
 	}
 }
