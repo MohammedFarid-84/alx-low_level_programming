@@ -11,7 +11,7 @@ char *_strcat(char *a, char *b)
 {
 	int x, y, i, n;
 	int c = 0;
-	
+
 	x = strlen(a);
 	y = strlen(b);
 	n = x + y;
