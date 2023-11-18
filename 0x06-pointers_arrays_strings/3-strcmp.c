@@ -9,11 +9,22 @@
 
 int _strcmp(char *s1, char *s2)
 {
-	/** int x = strlen(s1); **/
+	int x = strlen(s1);
 	/** int y = strlen(s2); **/
 	int i = 0;
+	int z;
 
-	i = s1[0] - s2[0];
-
-	return (i);
+	for (i = 0; i < x; i++)
+	{
+		z = s1[i] - s2[i];
+		if (z != 0)
+		{
+			break;
+		}
+		else
+		{
+			continue;
+		}
+	}
+	return (z);
 }
