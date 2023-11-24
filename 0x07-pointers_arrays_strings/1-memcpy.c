@@ -11,17 +11,7 @@
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int i;
-	unsigned int x = strlen(src);
-
-	if (n <= x)
-	{
-		n = n;
-	}
-	else
-	{
-		n = x;
-	}
-
+	/* unsigned int x = strlen(src); */
 
 	for (i = 0; i < n; i++)
 	{
