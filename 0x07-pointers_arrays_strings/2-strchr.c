@@ -16,7 +16,7 @@ char *_strchr(char *s, char c)
 
 	for (i = 0; i < lenth; i++)
 	{
-		if (s[i] == c)
+		if (s[i] == c && c != '\0')
 		{
 			bgn = 1;
 			break;
@@ -28,6 +28,6 @@ char *_strchr(char *s, char c)
 	}
 	else
 	{
-		return (" ");
+		return (NULL);
 	}
 }
