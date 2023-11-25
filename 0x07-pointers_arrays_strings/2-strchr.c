@@ -14,9 +14,9 @@ char *_strchr(char *s, char c)
 	int i = 0;
 	int bgn = 0;
 
-	for (i = 0; i < lenth; i++)
+	for (i = 0; i <= lenth; i++)
 	{
-		if (s[i] == c && c != '\0')
+		if (s[i] == c)
 		{
 			bgn = 1;
 			break;
