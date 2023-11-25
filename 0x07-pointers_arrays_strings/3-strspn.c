@@ -11,7 +11,7 @@ unsigned int _strspn(char *s, char *f)
 {
 	/* int halflens = strlen(s) / 2; */
 	int i = 0;
-	
+
 	if (strlen(s) == 0 || strlen(f) == 0)
 	{
 		return (i);
