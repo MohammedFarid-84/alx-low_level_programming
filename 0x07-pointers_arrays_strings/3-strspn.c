@@ -9,7 +9,7 @@
 
 unsigned int _strspn(char *s, char *f)
 {
-	/* int halflens = strlen(s) / 2; */
+	int halflens = strlen(s) / 2;
 	int i = 0;
 
 	if (strlen(s) == 0 || strlen(f) == 0)
@@ -18,8 +18,12 @@ unsigned int _strspn(char *s, char *f)
 	}
 	else if (strchr(f, s[0]) != 0)
 	{
-		while (strchr(s, f[i]) == 0)
+		while (i <= halflens)
+		{
+			if (strchr(f, s[i]) == 0)
+				break;
 			i++;
+		}
 	}
 	return (i);
 }
