@@ -10,8 +10,8 @@
 void print_diagsums(int *a, int size)
 {
 	int i = 0;
-	unsigned int x = 0;
-	unsigned int y = 0;
+	int x = 0;
+	int y = 0;
 	int j = size - 1;
 
 	for (i = 0; i < size; i++)
@@ -24,5 +24,5 @@ void print_diagsums(int *a, int size)
 		y = y + a[i * size + j];
 		j--;
 	}
-	printf("%u, %u\n", x, y);
+	printf("%d, %d\n", x, y);
 }
