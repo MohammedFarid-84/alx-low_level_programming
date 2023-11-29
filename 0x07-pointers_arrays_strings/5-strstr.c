@@ -9,13 +9,13 @@
 
 char *_strstr(char *s, char *f)
 {
-	int i = 0;
-	int j = 0;
+	int i, j, n;
 	int lns = strlen(s);
 	int lnsf = strlen(f);
-	int n = 0;
 
-	if (strlen(s) == 0)
+	i = j = n = 0;
+
+	if (strlen(s) == 0 || strchr(s, f[0]) == 0)
 	{
 		return (NULL);
 	}
@@ -23,32 +23,24 @@ char *_strstr(char *s, char *f)
 	{
 		return (s);
 	}
-	else if (strchr(s, f[0]) == 0)
-	{
-		return (NULL);
-	}
 	else
 	{
 		for (j = 0; j < lnsf; j++)
 		{
 			for (i = 0; i < lns; i++)
-			{
 				if (f[j] == s[i] && f[j + 1] == s[i + 1])
 				{
 					n = 1;
 					break;
 				}
-				else
-				{
-					n = 0;
-				}
-			}
 			if (n == 1)
 			{
 				break;
 			}
 			else
+			{
 				i = 0;
+			}
 		}
 	}
 
