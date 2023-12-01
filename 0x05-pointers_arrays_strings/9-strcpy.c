@@ -10,11 +10,15 @@
 
 char *_strcpy(char *x, char *y)
 {
-	int i = strlen(y);
-	int n = 0;
+	char *temp = y;
 
-	for (n = 0; n < i; n++)
-		x[n] = y[n];
+	while (*temp != '\0')
+	{
+		*x = *temp;
+		x++;
+		temp++;
+	}
 
-	return (x);
+	*x = '\0';
+	return (y);
 }
