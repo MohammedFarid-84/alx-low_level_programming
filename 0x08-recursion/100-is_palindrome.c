@@ -3,12 +3,14 @@
 /**
  * revs - reverse a string.
  * @s: pointer to a string.
+ * @i: increase point.
+ * @j: lenth word.
  * Return: string.
  */
 char *revs(char *s, int i, int j)
 {
 	char fchar;
-	char *y = malloc(strlen(s) +1);
+	char *y = malloc(strlen(s) + 1);
 
 	y = strcpy(y, s);
 
