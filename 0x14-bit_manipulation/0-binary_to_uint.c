@@ -58,10 +58,17 @@ int checkisdigit(const char *tx)
 
 unsigned int binary_to_uint(const char *s)
 {
-	/* first check if the text has a binary no */
-	int len = strlen(s);
 	int i = 0;
 	int result = 0;
+	int len = 0;
+
+	if(s == NULL)
+		return (0);
+
+	len = strlen(s);
+
+	if (len == 0)
+		return (0);
 
 	if (checkisdigit(s))
 	{
