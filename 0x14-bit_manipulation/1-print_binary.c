@@ -23,7 +23,9 @@ void print_binary(unsigned long int n)
 	}
 
 	while ((n & msk) == 0)
+	{
 		msk >>= 1;
+	}
 
 	while (msk > 0)
 	{
