@@ -62,7 +62,7 @@ unsigned int binary_to_uint(const char *s)
 	int result = 0;
 	int len = 0;
 
-	if(s == NULL)
+	if (s == NULL)
 		return (0);
 
 	len = strlen(s);
