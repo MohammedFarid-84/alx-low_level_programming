@@ -10,34 +10,43 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fc;
-	char *txt;
-	size_t result;
-
+	int fd = 0;
+	char *bufr;
+	ssize_t redbits, wrtbits;
 
 	if (strlen(filename) == 0 || letters <= 0)
 		return (0);
 
-	fc = fopen(filename, "r");
+	fd = open(filename, O_RDONLY);
 
-	if (!fc)
+	if (fd == -1)
 		return (0);
 
-	txt = malloc(letters + 1);
+	bufr = malloc(sizeof(char) * letters);
 
-	if (!txt)
+	if (!bufr)
 	{
-		fclose(fc);
+		close(fd);
 		return (0);
 	}
 
-	result = fread(txt, 1, letters, fc);
-	txt[letters] = '\0';
+	redbits = read(fd, bufr, letters);
 
+	if (redbits == -1)
+	{
+		free(bufr);
+		return (0);
+	}
 
-	printf("%s", txt);
-	free(txt);
-	fclose(fc);
+	wrtbits = write(STDOUT_FILENO, bufr, redbits);
+	if (wrtbits == -1 || wrtbits != redbits)
+	{
+		free(bufr);
+		return (0);
+	}
 
-	return (result);
+	printf("%s", bufr);
+	free(bufr);
+	close(fd);
+	return (wrtbits);
 }
