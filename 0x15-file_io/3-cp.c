@@ -62,7 +62,7 @@ int cpy(const char *file_from, const char *file_to)
 		return (99);
 
 	while ((bytsread = read(f1, bufr, sizeof(bufr))) > 0)
-	{	
+	{
 
 		if ((write(f2, bufr, bytsread)) == -1)
 			return (99);
