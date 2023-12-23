@@ -17,7 +17,7 @@ int hndlerr(int errnu, char **filnam)
 			strcpy(msg, "Usage: cp file_from file_to");
 			break;
 		case 98:
-			strcpy(msg, "Error: Can't read from ");
+			strcpy(msg, "Error: Can't read from file");
 			strcat(msg, filnam[1]);
 			break;
 		case 99:
