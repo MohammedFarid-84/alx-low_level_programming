@@ -4,11 +4,32 @@
 /**
  * hndlerr - for show an error message with code.
  * @errnu: an error number.
+ * @filnam: string parametr.
  * Return: void.
  */
-void hndlerr(int errnu)
+void hndlerr(int errnu, char **filnam)
 {
-	fprintf(stderr, "%s\n", strerror(errnu));
+	char msg[252] = {'\0'};
+
+	switch (errnu)
+	{
+		case 97:
+			strcpy(msg, "Usage: cp file_from file_to");
+			break;
+		case 98:
+			strcpy(msg, "Error: can't read from ");
+			strcat(msg, filnam[1]);
+			break;
+		case 99:
+			strcpy(msg, "Error: cant't write to ");
+			strcat(msg, filnam[2]);
+			break;
+		case 100:
+			strcpy(msg, "Error: cant't close fd 3");
+			break;
+	};
+
+	fprintf(stderr, "%s\n", msg);
 }
 
 /**
@@ -49,7 +70,7 @@ int cpy(const char *file_from, const char *file_to)
 			return (99);
 		}
 	}
-	if (!close(f1) || !close(f2))
+	if (close(f1) == -1 || close(f2) == -1)
 		return (100);
 	return (1);
 }
@@ -67,14 +88,14 @@ int main(int no, char **filsnam)
 
 	if (no != 3)
 	{
-		hndlerr(97);
+		hndlerr(97, filsnam);
 		return (0);
 	}
 
 	retfunc = cpy(filsnam[1], filsnam[2]);
 	if (retfunc > 1)
 	{
-		hndlerr(retfunc);
+		hndlerr(retfunc, filsnam);
 		return (0);
 	}
 	return (0);
