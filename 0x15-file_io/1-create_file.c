@@ -19,7 +19,7 @@ int create_file(const char *filename, char *text_content)
 
 	if (!fl)
 		return (-1);
-	if (strlen(text_content) == 0 || text_content == NULL)
+	if (text_content == NULL || strlen(text_content) == 0)
 	{
 		close(fl);
 		return (1);
