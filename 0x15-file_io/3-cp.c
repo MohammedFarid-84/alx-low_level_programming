@@ -1,6 +1,9 @@
 #include "main.h"
 #include <errno.h>
 
+/* global varible for set msg define */
+int fd = 0;
+
 /**
  * hndlerr - for show an error message with code.
  * @errnu: an error number.
@@ -28,8 +31,14 @@ int hndlerr(int errnu, char **filnam)
 			strcpy(msg, "Error: Can't close fd 3");
 			break;
 	};
-
-	dprintf(2, "%s\n", msg);
+	if (fd == 0)
+	{	
+		fprintf(stderr, "%s\n", msg);
+	}
+	else
+	{
+		fprintf(stdout, "%s\n", msg);
+	}
 	return (errnu);
 }
 
@@ -55,7 +64,10 @@ int cpy(const char *file_from, const char *file_to)
 	/* open file from and test if it not exsest */
 	f1 = open(file_from, O_RDONLY);
 	if (f1 == -1)
+	{
+		fd = 1;
 		return (98);
+	}
 
 	f2 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (f2 == -1)
