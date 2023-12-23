@@ -17,15 +17,15 @@ int hndlerr(int errnu, char **filnam)
 			strcpy(msg, "Usage: cp file_from file_to");
 			break;
 		case 98:
-			strcpy(msg, "Error: can't read from ");
+			strcpy(msg, "Error: Can't read from ");
 			strcat(msg, filnam[1]);
 			break;
 		case 99:
-			strcpy(msg, "Error: cant't write to ");
+			strcpy(msg, "Error: Can't write to ");
 			strcat(msg, filnam[2]);
 			break;
 		case 100:
-			strcpy(msg, "Error: cant't close fd 3");
+			strcpy(msg, "Error: Can't close fd 3");
 			break;
 	};
 
@@ -88,14 +88,14 @@ int main(int no, char **filsnam)
 	if (no != 3)
 	{
 		hndlerr(97, filsnam);
-		return (0);
+		return (97);
 	}
 
 	retfunc = cpy(filsnam[1], filsnam[2]);
 	if (retfunc > 1)
 	{
 		hndlerr(retfunc, filsnam);
-		return (0);
+		return (retfunc);
 	}
 	return (0);
 }
