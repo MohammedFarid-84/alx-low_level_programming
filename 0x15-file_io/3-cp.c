@@ -1,16 +1,14 @@
 #include "main.h"
 #include <errno.h>
 
-/* global varible for set msg define */
-int fd = 0;
-
 /**
  * hndlerr - for show an error message with code.
  * @errnu: an error number.
  * @filnam: string parametr.
+ * @fd: type of show.
  * Return: error number.
  */
-int hndlerr(int errnu, char **filnam)
+int hndlerr(int errnu, char **filnam, int fd)
 {
 	char msg[252];
 
@@ -32,7 +30,7 @@ int hndlerr(int errnu, char **filnam)
 			break;
 	};
 	if (fd == 0)
-	{	
+	{
 		fprintf(stderr, "%s\n", msg);
 	}
 	else
@@ -64,10 +62,7 @@ int cpy(const char *file_from, const char *file_to)
 	/* open file from and test if it not exsest */
 	f1 = open(file_from, O_RDONLY);
 	if (f1 == -1)
-	{
-		fd = 1;
 		return (98);
-	}
 
 	f2 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (f2 == -1)
@@ -100,14 +95,21 @@ int main(int no, char **filsnam)
 
 	if (no != 3)
 	{
-		hndlerr(97, filsnam);
+		hndlerr(97, filsnam, 0);
 		return (97);
 	}
 
 	retfunc = cpy(filsnam[1], filsnam[2]);
 	if (retfunc > 1)
 	{
-		hndlerr(retfunc, filsnam);
+		if (retfunc == 98)
+		{
+			hndlerr(retfunc, filsnam, 1);
+		}
+		else
+		{
+			hndlerr(retfunc, filsnam, 0);
+		}
 		return (retfunc);
 	}
 	return (0);
