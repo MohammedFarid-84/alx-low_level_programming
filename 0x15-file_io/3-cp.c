@@ -5,11 +5,11 @@
  * hndlerr - for show an error message with code.
  * @errnu: an error number.
  * @filnam: string parametr.
- * Return: void.
+ * Return: error number.
  */
-void hndlerr(int errnu, char **filnam)
+int hndlerr(int errnu, char **filnam)
 {
-	char msg[252] = {'\0'};
+	char msg[252];
 
 	switch (errnu)
 	{
@@ -30,6 +30,7 @@ void hndlerr(int errnu, char **filnam)
 	};
 
 	fprintf(stderr, "%s\n", msg);
+	return (errnu);
 }
 
 /**
@@ -48,9 +49,7 @@ int cpy(const char *file_from, const char *file_to)
 	size_t bytsread;
 	char bufr[1024];
 
-	if (file_from == NULL || strlen(file_from) == 0)
-		return (97);
-	if (file_to == NULL || strlen(file_to) == 0)
+	if (file_from == NULL || file_to == NULL)
 		return (97);
 
 	/* open file from and test if it not exsest */
@@ -58,7 +57,7 @@ int cpy(const char *file_from, const char *file_to)
 	if (f1 == -1)
 		return (98);
 
-	f2 = open(file_to, O_CREAT | O_WRONLY | O_APPEND, 0664);
+	f2 = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (f2 == -1)
 		return (99);
 
