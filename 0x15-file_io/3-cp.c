@@ -29,7 +29,7 @@ int hndlerr(int errnu, char **filnam)
 			break;
 	};
 
-	fprintf(stderr, "%s\n", msg);
+	dprintf(2, "%s\n", msg);
 	return (errnu);
 }
 
@@ -46,7 +46,7 @@ int hndlerr(int errnu, char **filnam)
 int cpy(const char *file_from, const char *file_to)
 {
 	int f1, f2;
-	size_t bytsread;
+	ssize_t bytsread;
 	char bufr[1024];
 
 	if (file_from == NULL || file_to == NULL)
@@ -62,12 +62,14 @@ int cpy(const char *file_from, const char *file_to)
 		return (99);
 
 	while ((bytsread = read(f1, bufr, sizeof(bufr))) > 0)
-	{
+	{	
+
 		if ((write(f2, bufr, bytsread)) == -1)
-		{
 			return (99);
-		}
 	}
+	if (bytsread == -1)
+		return (98);
+
 	if (close(f1) == -1 || close(f2) == -1)
 		return (100);
 	return (1);
