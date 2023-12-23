@@ -1,16 +1,33 @@
 #include "main.h"
 #include <errno.h>
+#include <sys/stat.h>
+
+/**
+ * fd - check if file is exiset or not.
+ * @st: the status of file.
+ * Return: 0 or 1.
+ */
+int fd(char *st)
+{
+	struct stat buffer;
+	int exit = stat(st, &buffer);
+
+
+	if (exit == 0)
+		return (1); /* file exist */
+	return (0); /* file not exist */
+}
 
 /**
  * hndlerr - for show an error message with code.
  * @errnu: an error number.
  * @filnam: string parametr.
- * @fd: type of show.
  * Return: error number.
  */
-int hndlerr(int errnu, char **filnam, int fd)
+int hndlerr(int errnu, char **filnam)
 {
 	char msg[252];
+	int x = 1;
 
 	switch (errnu)
 	{
@@ -20,6 +37,7 @@ int hndlerr(int errnu, char **filnam, int fd)
 		case 98:
 			strcpy(msg, "Error: Can't read from file ");
 			strcat(msg, filnam[1]);
+			x = fd(filnam[1]);
 			break;
 		case 99:
 			strcpy(msg, "Error: Can't write to ");
@@ -29,7 +47,7 @@ int hndlerr(int errnu, char **filnam, int fd)
 			strcpy(msg, "Error: Can't close fd 3");
 			break;
 	};
-	if (fd == 0)
+	if (x == 1)
 	{
 		fprintf(stderr, "%s\n", msg);
 	}
@@ -95,21 +113,14 @@ int main(int no, char **filsnam)
 
 	if (no != 3)
 	{
-		hndlerr(97, filsnam, 0);
+		hndlerr(97, filsnam);
 		return (97);
 	}
 
 	retfunc = cpy(filsnam[1], filsnam[2]);
 	if (retfunc > 1)
 	{
-		if (retfunc == 98)
-		{
-			hndlerr(retfunc, filsnam, 1);
-		}
-		else
-		{
-			hndlerr(retfunc, filsnam, 0);
-		}
+		hndlerr(retfunc, filsnam);
 		return (retfunc);
 	}
 	return (0);
