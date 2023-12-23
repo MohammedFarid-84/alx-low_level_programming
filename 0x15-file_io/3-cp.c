@@ -65,7 +65,6 @@ int cpy(const char *file_from, const char *file_to)
 	{
 		if ((write(f2, bufr, bytsread)) == -1)
 		{
-			break;
 			return (99);
 		}
 	}
