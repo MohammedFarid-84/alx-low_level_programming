@@ -53,14 +53,14 @@ char *gettx(char cr, unsigned int cod)
 char *getos(unsigned int no)
 {
 	char *tx1 = malloc(50);
-	char *nams[19] = {
+	char *nams[20] = {
 		"System V", "HP-UX", "NetBSD", "Linux",
-		"GUN Hurd", "Solaris", "AlX", "IRlX",
-		"FreeBSD", "Tru64", "Novell Modesto",
+		"GUN Hurd", "Sun Solaris", "Solaris", "AlX",
+		"IRlX", "FreeBSD", "Tru64", "Novell Modesto",
 		"OpenBSD", "OpenVMS", "NonStop Kernael",
 		"AROS", "FenixOS", "Nuxi CloudABl",
 		"Stratus Technologies OpenVOS"};
-	if (no > 18)
+	if (no > 19)
 		sprintf(tx1, "%s %u%s", "<unknown:", no, ">");
 	else
 		sprintf(tx1, "%s - %s", "UNIX", nams[no]);
@@ -112,7 +112,12 @@ char readelf(char *filename)
 			printf("%s\n", "ELF Header:");
 			printf("%s", "  Magic:   ");
 			for (; i < 16; i++)
-				printf("%02x ", header.e_ident[i]);
+			{
+				if (i < 15)
+					printf("%02x ", header.e_ident[i]);
+				else
+					printf("%02x", header.e_ident[i]);
+			}
 			printf("\n");
 			printf("%-36s %s\n", "  Class:", gettx('C', header.e_ident[4]));
 			printf("%-36s %s\n", "  Data:", gettx('D', header.e_ident[5]));
