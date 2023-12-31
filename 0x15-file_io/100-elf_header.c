@@ -98,18 +98,19 @@ char *gettyp(unsigned int no)
 
 int readelf(char *filename)
 {
-	int fl = 0;
 	ssize_t bytsred;
-	int i = 0;
+	int i, fl;
 	char *os, *typ;
 
 	ElfW(Ehdr) header;
 	fl = open(filename, O_RDONLY);
-	while ((bytsred = read(fl, &header, sizeof(header))) > 0)
+	bytsred = read(fl, &header, sizeof(header));
+	if (bytsred  > 0)
+	{
 		if (memcmp(header.e_ident, ELFMAG, SELFMAG) == 0)
 		{
 			printf("%s\n%s", "ELF Header:", "  Magic:   ");
-			for (; i < 16; i++)
+			for (i = 0; i < 16; i++)
 			{
 				if (i < 15)
 					printf("%02x ", header.e_ident[i]);
@@ -132,6 +133,7 @@ int readelf(char *filename)
 		{
 			return (98);
 		}
+	}
 	free(os);
 	free(typ);
 	close(fl);
