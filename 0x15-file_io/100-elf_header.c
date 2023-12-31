@@ -96,7 +96,7 @@ char *gettyp(unsigned int no)
  * Return: 1 if file readable or erro number if not.
  */
 
-char readelf(char *filename)
+int readelf(char *filename)
 {
 	int fl = 0;
 	ssize_t bytsred;
@@ -104,13 +104,11 @@ char readelf(char *filename)
 	char *os, *typ;
 
 	ElfW(Ehdr) header;
-
 	fl = open(filename, O_RDONLY);
 	while ((bytsred = read(fl, &header, sizeof(header))) > 0)
 		if (memcmp(header.e_ident, ELFMAG, SELFMAG) == 0)
 		{
-			printf("%s\n", "ELF Header:");
-			printf("%s", "  Magic:   ");
+			printf("%s\n%s", "ELF Header:", "  Magic:   ");
 			for (; i < 16; i++)
 			{
 				if (i < 15)
@@ -127,10 +125,13 @@ char readelf(char *filename)
 			printf("%-36s %u\n", "  ABI Version:", header.e_ident[EI_ABIVERSION]);
 			typ = gettyp(header.e_type);
 			printf("%-36s %s\n", "  Type:", typ);
-			printf("%-36s %#x\n", "  Entry Point Address:",
+			printf("%-36s %#x\n", "  Entry point address:",
 					(unsigned int)header.e_entry);
 		}
-
+		else
+		{
+			return (98);
+		}
 	free(os);
 	free(typ);
 	close(fl);
