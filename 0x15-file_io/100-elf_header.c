@@ -1,4 +1,5 @@
 #include <elf.h>
+#include <arpa/inet.h>
 #include "main.h"
 
 #if defined(__LP64__)
@@ -81,29 +82,55 @@ char *gettyp(unsigned int no)
 		"(Executable file)", "(Shared object file)",
 		"(Core file)"};
 
+	if (tx2 == NULL)
+	{
+		return (NULL);
+	}
 
 	if (no < 5)
+	{
 		sprintf(tx2, "%s %s", typ1[no], typ2[no]);
+	}
 	else
-		return (0);
+	{
+		sprintf(tx2, "%s %s", typ1[2], typ2[2]);
+	}
 
 	return (tx2);
 }
 
 /**
- * readelf - read an ELF file.
+ * getEntry - convert entry point as data type
+ * if it little or big enianness.
+ * @d: data type big or little.
+ * @n: number raised convert.
+ * Return: converted number.
+ */
+unsigned int getEntry(unsigned int d, unsigned int n)
+{
+	if (d > 1)
+		return (htonl(n));
+	return (n);
+}
+
+/**
+ * main - read an ELF file.
+ * @n: count of arguments.
  * @filename: the ELF file name.
- * Return: 1 if file readable or erro number if not.
+ * Return: 0 if file readable or 98 if not.
  */
 
-int readelf(char *filename)
+int main(int n, char **filename)
 {
 	ssize_t bytsred;
 	int i, fl;
 	char *os, *typ;
 
 	ElfW(Ehdr) header;
-	fl = open(filename, O_RDONLY);
+	if (n < 2)
+		return (98); /* no file name */
+
+	fl = open(filename[1], O_RDONLY);
 	bytsred = read(fl, &header, sizeof(header));
 	if (bytsred  > 0)
 	{
@@ -111,12 +138,8 @@ int readelf(char *filename)
 		{
 			printf("%s\n%s", "ELF Header:", "  Magic:   ");
 			for (i = 0; i < 16; i++)
-			{
-				if (i < 15)
-					printf("%02x ", header.e_ident[i]);
-				else
-					printf("%02x", header.e_ident[i]);
-			}
+				printf(i < 15 ? "%02x " : "%02x", header.e_ident[i]);
+
 			printf("\n");
 			printf("%-36s %s\n", "  Class:", gettx('C', header.e_ident[4]));
 			printf("%-36s %s\n", "  Data:", gettx('D', header.e_ident[5]));
@@ -127,7 +150,7 @@ int readelf(char *filename)
 			typ = gettyp(header.e_type);
 			printf("%-36s %s\n", "  Type:", typ);
 			printf("%-36s %#x\n", "  Entry point address:",
-					(unsigned int)header.e_entry);
+			getEntry(header.e_ident[5], (unsigned int)header.e_entry));
 		}
 		else
 		{
@@ -138,18 +161,4 @@ int readelf(char *filename)
 	free(typ);
 	close(fl);
 	return (0);
-}
-
-/**
- * main - run a read code.
- * @a: count of argoments.
- * @nam: name of file.
- * Return: zero always.
- */
-
-int main(int a, char **nam)
-{
-	if (a < 2)
-		return (-1);
-	return (readelf(nam[1]));
 }
