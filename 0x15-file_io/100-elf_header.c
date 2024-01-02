@@ -40,7 +40,10 @@ char *gettx(char cr, unsigned int cod)
 			if (cod == 0)
 				tx = "Invalid version";
 			else
-				tx = "1 (current)";
+				if (cod != EV_CURRENT)
+					tx = "1";
+				else
+					tx = "1 (current)";
 			break;
 	};
 	return (tx);
@@ -62,7 +65,7 @@ char *getos(unsigned int no)
 		"AROS", "FenixOS", "Nuxi CloudABl",
 		"Stratus Technologies OpenVOS"};
 	if (no > 19)
-		sprintf(tx1, "%s %u%s", "<unknown:", no, ">");
+		sprintf(tx1, "%s %x%s", "<unknown:", no, ">");
 	else
 		sprintf(tx1, "%s - %s", "UNIX", nams[no]);
 
