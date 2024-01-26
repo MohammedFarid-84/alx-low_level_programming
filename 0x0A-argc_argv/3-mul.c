@@ -3,8 +3,8 @@
 
 /**
  * main - print the resulte of multiplaution two numbers.
- * @frst: a first number.
- * @scnd: a second number.
+ * @argc: count of arguments.
+ * @argv: pointer of all arguments.
  * Return: zero if no errors and one if an error occurs.
  */
 
