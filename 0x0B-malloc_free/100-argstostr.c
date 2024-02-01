@@ -31,7 +31,7 @@ char *argstostr(int ac, char **av)
 	char *newstr;
 	int i = 0, j = 0, x = 0, lnth = 0;
 
-	if (ac <= 1)
+	if (ac < 1)
 		return (NULL);
 
 	for (; i < ac; i++)
