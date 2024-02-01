@@ -2,7 +2,7 @@
 
 /**
  * lenstr - calculte lingth of string.
- * @srts - a string.
+ * @strs: a string.
  * Return: 0 if null count charecter if not.
  */
 unsigned int lenstr(char *strs)
@@ -12,9 +12,10 @@ unsigned int lenstr(char *strs)
 	if (strs == NULL)
 		return (0);
 
-	while (*strs == '\0')
+	while (*strs != '\0')
 	{
 		i++;
+		strs++;
 	}
 
 	return (i);
@@ -29,31 +30,31 @@ unsigned int lenstr(char *strs)
 char *str_concat(char *s1, char *s2)
 {
 	char *newstr;
-	int i = 0;
+	int i = 0, x = 0, y = 0;
 
-	if (s1 == NULL && s2 == NULL)
+	if (s1 != NULL)
+		x = lenstr(s1);
+	if (s2 != NULL)
+		y = lenstr(s2);
+
+
+	newstr = malloc(x + y + 1);
+	if (newstr == NULL)
 		return (NULL);
 
-	newstr = malloc(lenstr(s1) + lenstr(s2) + 1);
-	if (newstr != NULL)
-	{
-		if (s1 != NULL)
+	if (s1 != NULL)
+		while (*s1 != '\0')
 		{
-			while (*s1 != '\0')
-			{
-				newstr[i] = *s1++;
-				i++;
-			}
+			newstr[i] = *s1++;
+			i++;
 		}
-		if (s2 != NULL)
+	if (s2 != NULL)
+		while (*s2 != '\0')
 		{
-			while (*s2 != '\0')
-			{
-				newstr[i] = *s2++;
-				i++;
-			}
+			newstr[i] = *s2++;
+			i++;
 		}
-		newstr[i] = '\0';
-	}
+
+	newstr[i] = '\0';
 	return (newstr);
 }
