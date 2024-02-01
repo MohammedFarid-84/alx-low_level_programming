@@ -17,17 +17,18 @@ int **alloc_grid(int width, int height)
 	if (width <= 0 || height <= 0)
 		return (NULL);
 
-	darry = malloc(sizeof(int) * height);
-	while (i < height)
-	{
-		darry[i] = malloc(sizeof(int) * width);
-		j = 0;
-		while (j < width)
+	darry = malloc((sizeof(int *) * height));
+	if (darry != NULL)
+		while (i < height)
 		{
-			darry[i][j] = 0;
-			j++;
+			darry[i] = malloc((sizeof(int) * width));
+			j = 0;
+			while (j < width)
+			{
+				darry[i][j] = 0;
+				j++;
+			}
+			i++;
 		}
-		i++;
-	}
 	return (darry);
 }
