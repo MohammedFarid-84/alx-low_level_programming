@@ -29,7 +29,7 @@ unsigned int lenstr(char *strs)
 char *argstostr(int ac, char **av)
 {
 	char *newstr;
-	int i = 1, j = 0, x = 0, lnth = 0;
+	int i = 0, j = 0, x = 0, lnth = 0;
 
 	if (ac <= 1)
 		return (NULL);
@@ -47,7 +47,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 
-	i = 1;
+	i = 0;
 	while (i < ac)
 	{
 		j = 0;
