@@ -1,6 +1,26 @@
 #include "main.h"
 
 /**
+ * lenstr - calculte lingth of string.
+ * @srts - a string.
+ * Return: 0 if null count charecter if not.
+ */
+unsigned int lenstr(char *strs)
+{
+	unsigned int i = 0;
+
+	if (strs == NULL)
+		return (0);
+
+	while (*strs == '\0')
+	{
+		i++;
+	}
+
+	return (i);
+}
+
+/**
  * str_concat - concatent two strings.
  * @s1: a first string.
  * @s2: a second string.
@@ -14,7 +34,7 @@ char *str_concat(char *s1, char *s2)
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 
-	newstr = malloc((sizeof(char) * 2) + 1);
+	newstr = malloc(lenstr(s1) + lenstr(s2) + 1);
 	if (newstr != NULL)
 	{
 		if (s1 != NULL)
