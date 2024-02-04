@@ -48,7 +48,7 @@ char **splitwords(char *str)
 	char **rwords, **words;
 	int w = 0, cr = 0, i = 0;
 
-	if (str == NULL)
+	if (str == NULL || lenstr(str) == 0)
 		return (NULL);
 	rwords = malloc(sizeof(char *) * lenstr(str));
 	if (rwords == NULL)
@@ -75,7 +75,7 @@ char **splitwords(char *str)
 		}
 		str++;
 	}
-	rwords[w] = NULL;
+	rwords[w++] = NULL;
 	words = malloc(sizeof(char *) * w);
 	w = 0;
 	while (rwords[w] != NULL)
