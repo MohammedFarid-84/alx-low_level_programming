@@ -17,6 +17,8 @@ unsigned int lenstr(char *strs)
 		i++;
 		strs++;
 	}
+	if (i == 1 && *strs == ' ')
+		i = 0;
 	return (i);
 }
 
