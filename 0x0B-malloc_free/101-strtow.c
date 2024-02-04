@@ -17,7 +17,7 @@ unsigned int lenstr(char *strs)
 		i++;
 		strs++;
 	}
-	if (i == 1 && *strs == ' ')
+	if (i == 1 || *strs == ' ')
 		i = 0;
 	return (i);
 }
@@ -77,13 +77,14 @@ char **splitwords(char *str)
 	rwords[w++] = NULL;
 	words = malloc(sizeof(char *) * w);
 	w = 0;
-	while (rwords[w++] != NULL)
+	while (rwords[w] != NULL)
 	{
 		if (lenstr(rwords[w]) != 0)
 		{
 			words[i] = rwords[w];
 			i++;
 		}
+		w++;
 	}
 	words[i] = NULL;
 	return (words);
