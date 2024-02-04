@@ -56,14 +56,11 @@ char **splitwords(char *str)
 	while (*str != '\0')
 	{
 		if (rwords[w] == NULL)
-			rwords[w] = malloc(sizeof(char) * 20);
+			rwords[w] = malloc(sizeof(char) * 15);
 		if (*str != ' ')
 		{
 			if (rwords[w] == NULL)
-			{
-				free_ary(rwords, w);
 				return (NULL);
-			}
 			rwords[w][cr] = *str;
 			cr++;
 		}
@@ -78,14 +75,13 @@ char **splitwords(char *str)
 	rwords[w++] = NULL;
 	words = malloc(sizeof(char *) * w);
 	w = 0;
-	while (rwords[w] != NULL)
+	while (rwords[w++] != NULL)
 	{
 		if (lenstr(rwords[w]) != 0)
 		{
 			words[i] = rwords[w];
 			i++;
 		}
-		w++;
 	}
 	words[i] = NULL;
 	return (words);
