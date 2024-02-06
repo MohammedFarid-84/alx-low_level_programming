@@ -56,46 +56,38 @@ void free_ary(char **ary, int n)
  */
 char **splitwords(char *str)
 {
-	char **rwords, **words;
-	int w = 0, cr = 0, i = 0;
+	char **rwords, *word = NULL;
+	int w = 0, i = 0;
 
 	if (str == NULL || lenstr(str) == 0)
 		return (NULL);
+
 	rwords = malloc(sizeof(char *) * lenstr(str));
 	if (rwords == NULL)
 		return (NULL);
-	while (*str != '\0')
+
+	word = strtok(str, " ");
+	while (word != NULL)
 	{
-		if (rwords[w] == NULL)
-			rwords[w] = malloc(sizeof(char) * 15);
-		if (*str != ' ')
+		if (word && lenstr(word) > 0)
 		{
-			rwords[w][cr] = *str;
-			cr++;
-		}
-		else
-		{
-			rwords[w][cr] = '\0';
-			cr = 0;
+			i = 0;
+			rwords[w] = malloc(sizeof(char) * lenstr(word) + 1);
+			if (rwords[w] == NULL)
+				return (NULL);
+			while (*word != '\0')
+			{
+				rwords[w][i] = *word++;
+				i++;
+			}
+			rwords[w][i] = '\0';
 			w++;
 		}
-		str++;
+		word = strtok(NULL, " ");
 	}
+
 	rwords[w] = NULL;
-	words = malloc(sizeof(char *) * w + 1);
-	w = 0;
-	while (rwords[w] != NULL)
-	{
-		if (lenstr(rwords[w]) > 0)
-		{
-			words[i] = rwords[w];
-			i++;
-			printf("i= %d w= %d word=%s\n", i, w, rwords[w]);
-		}
-		w++;
-	}
-	words[i] = NULL;
-	return (words);
+	return (rwords);
 }
 
 /**
@@ -106,8 +98,12 @@ char **splitwords(char *str)
 char **strtow(char *str)
 {
 	char **newstr;
+	char *strtwo;
 
-	newstr = splitwords(str);
+	strtwo = strdup(str);
+
+	newstr = splitwords(strtwo);
+	free(strtwo);
 	if (newstr != NULL)
 		return (newstr);
 	return (NULL);

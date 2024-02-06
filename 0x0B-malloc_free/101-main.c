@@ -32,5 +32,6 @@ int main(void)
 		return (1);
 	}
 	print_tab(tab);
+
 	return (0);
 }
