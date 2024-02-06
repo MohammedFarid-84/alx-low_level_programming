@@ -50,6 +50,27 @@ void free_ary(char **ary, int n)
 }
 
 /**
+ * countwords - count a words in a string.
+ * @strng: a string.
+ * Return: count of a words or 0 if null.
+ */
+int countwords(char *strng)
+{
+	int i = 0;
+
+	if (strng == NULL)
+		return (0);
+
+	while (*strng != '\0')
+	{
+		if (*strng == ' ')
+			i++;
+		strng++;
+	}
+	return (i);
+}
+
+/**
  * splitwords - split a string by words.
  * @str: a string.
  * Return: array of words or null.
@@ -57,12 +78,13 @@ void free_ary(char **ary, int n)
 char **splitwords(char *str)
 {
 	char **rwords, *word = NULL;
-	int w = 0, i = 0;
+	int w = 0, i = 0, wrds = 0;
 
 	if (str == NULL || lenstr(str) == 0)
 		return (NULL);
 
-	rwords = malloc(sizeof(char *) * lenstr(str));
+	wrds = countwords(str);
+	rwords = malloc(sizeof(char *) * wrds);
 	if (rwords == NULL)
 		return (NULL);
 
