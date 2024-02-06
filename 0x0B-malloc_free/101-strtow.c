@@ -63,7 +63,7 @@ int countwords(char *strng)
 
 	while (*strng != '\0')
 	{
-		if (*strng == ' ' && *strng++ != ' ')
+		if (*strng == ' ' && *(strng + 1) != ' ' && *(strng + 1) != '\0')
 			i++;
 		strng++;
 	}
