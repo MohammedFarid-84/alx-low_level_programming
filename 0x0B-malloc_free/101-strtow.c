@@ -84,7 +84,7 @@ char **splitwords(char *str)
 		return (NULL);
 
 	wrds = countwords(str);
-	rwords = malloc(sizeof(char *) * (wrds - 1));
+	rwords = malloc(sizeof(char *) * wrds);
 	if (rwords == NULL)
 		return (NULL);
 
@@ -94,7 +94,7 @@ char **splitwords(char *str)
 		if (word && lenstr(word) > 0)
 		{
 			i = 0;
-			rwords[w] = malloc(sizeof(char) * (lenstr(word) + 1));
+			rwords[w] = malloc(sizeof(char) * (lenstr(word) - 1));
 			if (rwords[w] == NULL)
 				return (NULL);
 			while (*word != '\0')
