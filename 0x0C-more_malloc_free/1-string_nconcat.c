@@ -40,9 +40,9 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int lx = lenstr(s1), ly = lenstr(s2), x = 0, y = 0;
 
 	if (n >= ly)
-		newstring = malloc(lx + ly + 1);
+		newstring = malloc(lx + ly + 2);
 	else
-		newstring = malloc(lx + n + 2);
+		newstring = malloc(lx + n + 3);
 
 	if (newstring == NULL)
 		return (NULL);
