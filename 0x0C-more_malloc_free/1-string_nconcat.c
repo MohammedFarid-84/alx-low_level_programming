@@ -37,13 +37,12 @@ unsigned int lenstr(char *str)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *newstring;
-	unsigned int lx = lenstr(s1), ly = lenstr(s2);
-	unsigned int x = 0, y = 0;
+	unsigned int lx = lenstr(s1), ly = lenstr(s2), x = 0, y = 0;
 
 	if (n >= ly)
 		newstring = malloc(lx + ly + 1);
 	else
-		newstring = malloc(lx + n + 1);
+		newstring = malloc(lx + n + 2);
 
 	if (newstring == NULL)
 		return (NULL);
@@ -65,7 +64,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			x++;
 		}
 	}
-	else if (ly > 0 && n > ly)
+	else if (ly > 0 && n >= ly)
 	{
 		while (*s2 != '\0')
 		{
@@ -74,5 +73,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			s2++;
 		}
 	}
+	newstring[y] = '\0';
 	return (newstring);
 }
