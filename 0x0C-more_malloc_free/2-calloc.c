@@ -12,9 +12,10 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	memo = malloc((nmemb * size) + 1);
+	memo = malloc(nmemb * size);
 	if (memo == NULL)
 		return (NULL);
 
+	memset(memo, 0, (nmemb * size));
 	return (memo);
 }
