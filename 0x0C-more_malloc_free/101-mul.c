@@ -20,21 +20,20 @@ int testisdigit(char *digt)
 /**
  * iszero - test if all numbers are zero.
  * @no: is a char pointer has a number.
- * Return: -1 if all number is zero,
- * 0 if not.
+ * Return: 1 if the string is gretar than 0,
+ * and 0 if a string has 0's only.
  */
 int iszero(char *no)
 {
-	int x = 0, len = strlen(no);
+	/* int x = 0, len = strlen(no); */
 
-	while (x < len)
+	while (*no != '\0')
 	{
 		if (*no != '0')
-			return (0);
-		x++;
+			return (1);
 		no++;
 	}
-	return (-1);
+	return (0);
 }
 
 /**
@@ -48,15 +47,6 @@ char *mlty(char *no1, char *no2)
 	int len1 = strlen(no1), len2 = strlen(no2);
 	int x, y, tmp, clc;
 	char *reslt = calloc(len1 + len2 + 1, sizeof(char));
-
-	if (iszero(no1) != 0 || iszero(no2) != 0)
-	{
-		free(reslt);
-		reslt = malloc(2);
-		reslt[0] = '0';
-		reslt[1] = '\0';
-		return (reslt);
-	}
 
 	for (x = len1 - 1; x >= 0; x--)
 	{
@@ -76,6 +66,13 @@ char *mlty(char *no1, char *no2)
 
 	reslt[x] = '\0';
 
+	if (iszero(reslt) == 0)
+	{
+		free(reslt);
+		reslt = calloc(2, sizeof(char));
+		reslt[0] = '0';
+		reslt[1] = '\0';
+	}
 	return (reslt);
 }
 
@@ -103,9 +100,12 @@ int main(int argc, char **argv)
 	if (res != NULL)
 	{
 		len = strlen(res);
-		for (i = 1; i < len; i++)
+		while (i < len)
 		{
+			if (i == 0 && len > 1 && res[i] == '0')
+				i++;
 			_putchar(res[i]);
+			i++;
 		}
 		_putchar('\n');
 		free(res);
