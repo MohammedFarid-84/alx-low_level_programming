@@ -8,12 +8,6 @@
 #include <string.h>
 
 
-/* my prototype functions */
-
-
-
-
-
 /**
  * struct dog - a structure define a data for dogs.
  * @name: a first member is a dog name
@@ -28,5 +22,13 @@ struct dog
 	float age;
 	char *owner;
 };
+
+
+
+/* my prototype functions */
+void init_dog(struct dog *d, char *name, float age, char *owner);
+
+
+
 
 #endif
