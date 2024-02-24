@@ -23,13 +23,13 @@ int main(int argc, char **argv)
 	if (x <= 0)
 	{
 		printf("Error\n");
-		exit(2);
+		exit(1);
 	}
 	f = fopen(argv[0], "rb");
 	if (f == NULL)
 		return (0);
 	rdbytf = fread(bfr, sizeof(unsigned char), x, f);
-	for (i = 1; i < rdbytf; i++)
+	for (i = 0; i < rdbytf; i++)
 	{
 		printf("%02x ", bfr[i]);
 	}
