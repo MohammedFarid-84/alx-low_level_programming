@@ -61,7 +61,7 @@ void prntstr(va_list args)
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	int i = 0, len = 0, j = 0;
+	int i = 0, j = 0;
 
 	f_t form[] = {
 		{'c', prntchr},
@@ -71,20 +71,16 @@ void print_all(const char * const format, ...)
 	};
 
 	va_start(args, format);
-	len = strlen(format);
+
 	while (format[i] != '\0')
 	{
 		while (j < 4)
 		{
 			if (format[i] == form[j].chr)
-			{
 				form[j].func(args);
-
-				if (i < len - 1)
-					printf(", ");
-			}
 			j++;
 		}
+		printf(", ");
 		i++;
 		j = 0;
 	}
