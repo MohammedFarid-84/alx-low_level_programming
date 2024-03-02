@@ -8,8 +8,7 @@
 void prntint(va_list args)
 {
 
-	if (args != NULL)
-		printf("%d", va_arg(args, int));
+	printf("%d", va_arg(args, int));
 	va_end(args);
 }
 
@@ -20,8 +19,7 @@ void prntint(va_list args)
  */
 void prntchr(va_list args)
 {
-	if (args != NULL)
-		printf("%c", va_arg(args, int));
+	printf("%c", va_arg(args, int));
 	va_end(args);
 }
 
@@ -32,8 +30,7 @@ void prntchr(va_list args)
  */
 void prntflot(va_list args)
 {
-	if (args != NULL)
-		printf("%f", va_arg(args, double));
+	printf("%f", va_arg(args, double));
 	va_end(args);
 }
 
@@ -44,11 +41,6 @@ void prntflot(va_list args)
  */
 void prntstr(va_list args)
 {
-	if (args == NULL)
-	{
-		printf("%s", "(nil)");
-		return;
-	}
 	printf("%s", va_arg(args, char*));
 	va_end(args);
 }
