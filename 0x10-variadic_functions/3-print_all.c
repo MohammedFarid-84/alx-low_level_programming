@@ -44,8 +44,12 @@ void prntflot(va_list args)
  */
 void prntstr(va_list args)
 {
-	if (args != NULL)
-		printf("%s", va_arg(args, char*));
+	if (args == NULL)
+	{
+		printf("%s", "(nil)");
+		return;
+	}
+	printf("%s", va_arg(args, char*));
 	va_end(args);
 }
 
@@ -65,9 +69,6 @@ void print_all(const char * const format, ...)
 		{'f', prntflot},
 		{'s', prntstr}
 	};
-
-	if (format == NULL)
-		return;
 
 	va_start(args, format);
 	len = strlen(format);
