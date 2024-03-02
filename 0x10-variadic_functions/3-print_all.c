@@ -75,27 +75,27 @@ void print_all(const char * const format, ...)
 	va_start(args, format);
 	switch (format != NULL)
 	{
-		case 1:
-			while (format[i] != '\0')
-			{
-				while (j < 4)
-				{
-					if (format[i] == form[j].chr)
-					{
-						form[j].func(args);
-						if (format[i + 1] != '\0')
-							printf(", ");
-					}
-					j++;
-				}
-				i++;
-				j = 0;
-			}
+		case 0:
 			printf("\n");
-			break;
+			return;
 		default:
-			printf("\n");
 			break;
 	}
+	while (format[i] != '\0')
+	{
+		while (j < 4)
+		{
+			if (format[i] == form[j].chr)
+			{
+				form[j].func(args);
+				if (format[i + 1] != '\0')
+					printf(", ");
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	printf("\n");
 	va_end(args);
 }
