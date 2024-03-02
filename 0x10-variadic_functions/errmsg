@@ -1,0 +1,42 @@
+3-print_all.c: In function ‘print_all’:
+3-print_all.c:16:15: error: expected expression before ‘char’
+   16 |   {'c', "%c", char},
+      |               ^~~~
+3-print_all.c:16:15: error: missing initializer for field ‘typ’ of ‘f_t’ {aka ‘struct formats’} [-Werror=missing-field-initializers]
+In file included from 3-print_all.c:1:
+variadic_functions.h:35:15: note: ‘typ’ declared here
+   35 |  unsigned int typ;
+      |               ^~~
+3-print_all.c:17:15: error: expected expression before ‘int’
+   17 |   {'i', "%d", int},
+      |               ^~~
+3-print_all.c:17:15: error: missing initializer for field ‘typ’ of ‘f_t’ {aka ‘struct formats’} [-Werror=missing-field-initializers]
+In file included from 3-print_all.c:1:
+variadic_functions.h:35:15: note: ‘typ’ declared here
+   35 |  unsigned int typ;
+      |               ^~~
+3-print_all.c:18:15: error: expected expression before ‘double’
+   18 |   {'f', "%f", double},
+      |               ^~~~~~
+3-print_all.c:18:15: error: missing initializer for field ‘typ’ of ‘f_t’ {aka ‘struct formats’} [-Werror=missing-field-initializers]
+In file included from 3-print_all.c:1:
+variadic_functions.h:35:15: note: ‘typ’ declared here
+   35 |  unsigned int typ;
+      |               ^~~
+3-print_all.c:19:15: error: expected expression before ‘char’
+   19 |   {'s', "%s", char *}
+      |               ^~~~
+3-print_all.c:19:15: error: missing initializer for field ‘typ’ of ‘f_t’ {aka ‘struct formats’} [-Werror=missing-field-initializers]
+In file included from 3-print_all.c:1:
+variadic_functions.h:35:15: note: ‘typ’ declared here
+   35 |  unsigned int typ;
+      |               ^~~
+In file included from variadic_functions.h:9,
+                 from 3-print_all.c:1:
+3-print_all.c:35:30: error: expected specifier-qualifier-list before ‘t’
+   35 |     printf(frm, va_arg(args, t));
+      |                              ^
+3-print_all.c:13:15: error: variable ‘t’ set but not used [-Werror=unused-but-set-variable]
+   13 |  unsigned int t;
+      |               ^
+cc1: all warnings being treated as errors
