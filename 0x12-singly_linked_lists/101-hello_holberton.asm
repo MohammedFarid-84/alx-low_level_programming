@@ -16,7 +16,7 @@ main:
 	mov rax, 1
 	mov rdi, 1
 	mov rsi, msg
-	mov rdx, 17
+	mov rdx, 16
 	syscall
 ;print newline
 	mov rax, 1
