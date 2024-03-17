@@ -1,0 +1,19 @@
+section .data
+	msg db "Hello, Holberton\n", 0
+
+section .text
+	global main
+	extern printf
+
+main:
+; write the messag to stdout.
+	mov rax, 1 		;one point to the write() system call.
+	mov rdi, 1 		;one point to the first argument in write 1 is a stdout.
+	mov rsi, msg 		;the second argument of write is a buffer address.
+	mov rdx, 16 		;the third argument of write the count of bytes to write.
+	syscall
+
+;exit
+	mov eax, 60 		;this number point to the exit() system call.
+	xor edi, edi 		;convert edi regster to 0.
+	syscall
